@@ -1,0 +1,67 @@
+{
+   "packages" : {
+      "mirror" : "http://pkg.cloudscaling.com/ocs"
+   },
+   "system" : {
+      "release" : "fugu",
+      "architecture" : "amd64",
+      "charmap" : "UTF-8",
+      "locale" : "en_US",
+      "timezone" : "UTC",
+      "bootloader" : "grub"
+   },
+   "volume" : {
+      "partitions" : {
+         "swap" : {
+            "size" : "128MiB"
+         },
+         "root" : {
+            "filesystem" : "ext4",
+            "size" : "864MiB"
+         },
+         "type" : "msdos",
+         "boot" : {
+            "filesystem" : "ext2",
+            "size" : "32MiB"
+         }
+      },
+      "backing" : "raw"
+   },
+   "image" : {
+      "name" : "ocs-{system.release}-{system.architecture}-{%y}{%m}{%d}",
+      "description" : "OCS {system.release} {system.architecture}"
+   },
+   "provider" : "kvm",
+   "bootstrapper" : {
+      "mirror" : "http://pkg.cloudscaling.com/ocs",
+      "workspace" : "/scratch/imagebuild"
+   },
+   "plugins" : {
+      "ocs" : {},
+      "root_password" : {
+         "password" : "test"
+      },
+      "admin_user" : {
+         "username" : "cloudscaling"
+      },
+      "apt_proxy" : {
+         "address" : "sfonas.sfo.cloudscaling.com",
+         "port" : 3142,
+         "persistent" : false
+      },
+      "image_commands" : {
+         "commands" : [
+            ["echo", "this is one command", "split into parameters"],
+            ["echo", "and this is another command"]
+         ]
+      },
+      "minimize_size" : {
+         "zerofree" : true
+      },
+      "ntp" : {
+         "servers" : ["pool.ntp.org"]
+      },
+      "prebootstrapped" : {
+      }
+   }
+}
