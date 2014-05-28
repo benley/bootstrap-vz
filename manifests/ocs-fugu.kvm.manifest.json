@@ -1,6 +1,8 @@
 {
    "packages" : {
-      "mirror" : "http://pkg.cloudscaling.com/ocs"
+      "mirror" : "http://pkg.cloudscaling.com/ocs",
+      "install" : [ "ocs-minimal", "ocs-standard", "chef" ],
+      "components" : [ "main", "universe" ]
    },
    "system" : {
       "release" : "fugu",
@@ -17,13 +19,9 @@
          },
          "root" : {
             "filesystem" : "ext4",
-            "size" : "864MiB"
+            "size" : "896MiB"
          },
-         "type" : "msdos",
-         "boot" : {
-            "filesystem" : "ext2",
-            "size" : "32MiB"
-         }
+         "type" : "msdos"
       },
       "backing" : "raw"
    },

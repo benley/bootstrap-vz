@@ -20,6 +20,8 @@
 	"rex":     "rex",
 	"buzz":    "buzz",
 
-	"fugu":    "fugu"
-
+	// OCS codenames
+	"fugu":    "fugu",
+	"gar":     "gar",
+	"develop": "develop"
 }

@@ -14,7 +14,7 @@ def validate_manifest(data, validator, error):
 
 
 def resolve_tasks(taskset, manifest):
-    #settings = manifest.plugins['ocs']
+    # settings = manifest.plugins['ocs']
     discard_tasks = [locale.GenerateLocale,
                      apt.AddDefaultSources,
                      initd.InstallInitScripts]

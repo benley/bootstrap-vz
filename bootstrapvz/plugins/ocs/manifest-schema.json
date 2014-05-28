@@ -1,17 +1,26 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
-	"title": "OCS plugin manifest",
-	"type": "object",
-	"properties": {
-		"plugins": {
-			"type": "object",
-			"properties": {
-				"ocs": {
-					"type": "object",
-					"properties": {
-					}
-				}
-			}
-		}
-	}
+   "$schema" : "http://json-schema.org/draft-04/schema#",
+   "title" : "OCS plugin manifest",
+   "type" : "object",
+   "properties" : {
+      "system" : {
+         "type" : "object",
+         "properties" : {
+            "architecture" : {
+               "type" : "string",
+               "enum" : ["amd64"]
+               // OCS only runs on amd64
+            }
+         }
+      },
+      "plugins" : {
+         "type" : "object",
+         "properties" : {
+            "ocs" : {
+               "type" : "object",
+               "properties" : {}
+            }
+         }
+      }
+   }
 }
