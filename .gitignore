@@ -12,3 +12,6 @@
 # Testing
 /.coverage
 /.tox/
+# Editor temp files
+.*.swp
+*~
