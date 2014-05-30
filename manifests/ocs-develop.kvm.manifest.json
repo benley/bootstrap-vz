@@ -1,11 +1,17 @@
 {
    "packages" : {
       "mirror" : "http://pkg.cloudscaling.com/ocs",
-      "install" : [ "ocs-minimal", "ocs-standard", "chef" ],
-      "components" : [ "main", "universe" ]
+      "install" : [ "ocs-minimal", "ocs-standard", "chef", "curl",
+                    "ocs-basefiles", "ruby2.0-dev", "build-essential" ],
+      "components" : [ "main", "universe", "non-free" ],
+      "sources" : {
+         "ocs-proposed" : [
+            "deb http://pkg.cloudscaling.com/ocs develop-proposed main universe"
+            ]
+      }
    },
    "system" : {
-      "release" : "fugu",
+      "release" : "develop",
       "architecture" : "amd64",
       "charmap" : "UTF-8",
       "locale" : "en_US",
@@ -19,7 +25,7 @@
          },
          "root" : {
             "filesystem" : "ext4",
-            "size" : "896MiB"
+            "size" : "1500MiB"
          },
          "type" : "msdos"
       },
@@ -49,8 +55,14 @@
       },
       "image_commands" : {
          "commands" : [
-            ["echo", "this is one command", "split into parameters"],
-            ["echo", "and this is another command"]
+            ["touch", "{root}/etc/init.d/.legacy-bootordering"],
+            ["rm", "-f", "{root}/etc/dpkg/dpkg.cfg.d/multiarch"],
+            ["cp", "/etc/resolv.conf", "{root}/etc/resolv.conf"],
+            ["chroot", "{root}", "gem", "install", "mudbug", "--version",
+             "~> 0.8"],
+            ["chroot", "{root}", "gem", "install", "netaddr", "--version",
+             "~> 1.5"],
+            ["rm", "-f", "{root}/etc/resolv.conf"]
          ]
       },
       "minimize_size" : {

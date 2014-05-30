@@ -14,7 +14,7 @@
 "fugu": ["auto eth0",
          "iface eth0 inet dhcp"],
 "gar": ["auto eth0",
-        "iface eth0 inet dhcp"]
+        "iface eth0 inet dhcp"],
 "develop": ["auto eth0",
             "iface eth0 inet dhcp"]
 }
