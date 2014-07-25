@@ -66,12 +66,12 @@
          ]
       },
       "minimize_size" : {
-         "zerofree" : true
+         "zerofree" : false
       },
       "ntp" : {
          "servers" : ["pool.ntp.org"]
-      },
-      "prebootstrapped" : {
       }
+      //"prebootstrapped" : {
+      //}
    }
 }
