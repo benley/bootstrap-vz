@@ -1,8 +1,15 @@
 {
    "packages" : {
       "mirror" : "http://pkg.cloudscaling.com/ocs",
-      "install" : [ "ocs-minimal", "ocs-standard", "chef", "curl",
-                    "ocs-basefiles", "ruby2.0-dev", "build-essential" ],
+      "install" : [
+        "build-essential",
+        "chef",
+        "curl",
+        "ocs-basefiles",
+        "ocs-minimal",
+        "ocs-standard",
+        "ruby2.0-dev"
+      ],
       "components" : [ "main", "universe", "non-free" ],
       "sources" : {
          "ocs-proposed" : [
@@ -20,9 +27,6 @@
    },
    "volume" : {
       "partitions" : {
-         "swap" : {
-            "size" : "128MiB"
-         },
          "root" : {
             "filesystem" : "ext4",
             "size" : "1500MiB"
@@ -38,7 +42,7 @@
    "provider" : "kvm",
    "bootstrapper" : {
       "mirror" : "http://pkg.cloudscaling.com/ocs",
-      "workspace" : "/scratch/imagebuild"
+      "workspace" : "/var/tmp/bootstrap-vz"
    },
    "plugins" : {
       "ocs" : {},
@@ -55,14 +59,12 @@
       },
       "image_commands" : {
          "commands" : [
-            ["touch", "{root}/etc/init.d/.legacy-bootordering"],
-            ["rm", "-f", "{root}/etc/dpkg/dpkg.cfg.d/multiarch"],
-            ["cp", "/etc/resolv.conf", "{root}/etc/resolv.conf"],
-            ["chroot", "{root}", "gem", "install", "mudbug", "--version",
-             "~> 0.8"],
-            ["chroot", "{root}", "gem", "install", "netaddr", "--version",
-             "~> 1.5"],
-            ["rm", "-f", "{root}/etc/resolv.conf"]
+            //["touch", "{root}/etc/init.d/.legacy-bootordering"],
+            ["rm", "-f", "{root}/etc/dpkg/dpkg.cfg.d/multiarch"]
+            //["cp", "/etc/resolv.conf", "{root}/etc/resolv.conf"],
+            //["chroot", "{root}", "gem", "install", "mudbug", "--version", "~> 0.8"],
+            //["chroot", "{root}", "gem", "install", "netaddr", "--version", "~> 1.5"],
+            //["rm", "-f", "{root}/etc/resolv.conf"]
          ]
       },
       "minimize_size" : {
